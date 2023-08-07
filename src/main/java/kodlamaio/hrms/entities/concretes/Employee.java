@@ -13,10 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="employees")
-public class Employee{
-
-	@Id
-	private int id;
+public class Employee extends BaseUser{
 
 	private String name;
 
@@ -27,9 +24,5 @@ public class Employee{
 
 	@Column(name = "birth_year")
 	private int birthyear;
-
-	@OneToOne
-	@JoinColumn(name = "id")
-	private BaseUser baseUser;
 
 }

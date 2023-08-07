@@ -32,7 +32,7 @@ public class EmployerRegister implements Register{
 		}
 		
 		
-		if(!emailValidation.emailValidatorForEmployee(employer.getBaseUser().getEmail())) {
+		if(!emailValidation.emailValidatorForEmployee(employer.getEmail())) {
 			return new ErrorResult("Email dogru deyil.");
 		}
 		
@@ -41,7 +41,7 @@ public class EmployerRegister implements Register{
 		}
 		
 		
-		if(passwordValidation.PasswordValidator(employer.getBaseUser().getPassword())) {
+		if(passwordValidation.PasswordValidator(employer.getPassword())) {
 //			if(!employer.getPassword1().equals(employer.getPassword2())) {
 //				return new ErrorResult("Sifreler uygun deyil.");
 //			}

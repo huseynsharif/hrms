@@ -11,12 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="employers")
-public class Employer{
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int employer_id;
+public class Employer extends BaseUser{
 	
 	@Column(name="company_name")
 	private String companyName;
@@ -25,9 +20,5 @@ public class Employer{
 	
 	@Column(name="phone_number")
 	private String phoneNumber;
-
-	@OneToOne()
-	@JoinColumn(name = "id")
-	private BaseUser baseUser;
 
 }

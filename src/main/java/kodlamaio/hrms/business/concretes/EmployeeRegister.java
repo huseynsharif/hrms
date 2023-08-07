@@ -35,11 +35,11 @@ public class EmployeeRegister implements Register{
 //			return new ErrorResult("Dogum tarixi bos ola bilmez");
 //		}
 		
-		if(!emailValidation.emailValidatorForEmployee(employee.getBaseUser().getEmail())) {
+		if(!emailValidation.emailValidatorForEmployee(employee.getEmail())) {
 			return new ErrorResult("Email dogru deyil.");
 		}
 		
-		if(passwordValidation.PasswordValidator(employee.getBaseUser().getPassword())) {
+		if(passwordValidation.PasswordValidator(employee.getPassword())) {
 //			if(!employee.getPassword1().equals(employee.getPassword2())) {
 //				return new ErrorResult("Sifreler uygun deyil.");
 //			}

@@ -12,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class BaseUser {
 
     @Id
