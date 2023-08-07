@@ -16,6 +16,7 @@ public class JobAdvertisement {
 
     @Id
     @Column(name = "advertisement_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String description;
