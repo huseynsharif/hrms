@@ -16,9 +16,7 @@ import lombok.NoArgsConstructor;
 public class Employee{
 
 	@Id
-	@OneToOne()
-	@PrimaryKeyJoinColumn
-	private BaseUser baseUser;
+	private int id;
 
 	private String name;
 
@@ -29,5 +27,9 @@ public class Employee{
 
 	@Column(name = "birth_year")
 	private int birthyear;
+
+	@OneToOne
+	@JoinColumn(name = "id")
+	private BaseUser baseUser;
 
 }

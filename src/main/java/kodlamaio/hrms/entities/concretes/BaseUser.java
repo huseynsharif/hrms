@@ -16,11 +16,10 @@ public class BaseUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="user_id")
+    @Column(name="id")
     private int id;
 
     private String email;
-
 
     private String password;
 }
