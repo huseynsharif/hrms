@@ -43,15 +43,15 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     @Override
     public DataResult<JobAdvertisement> add(JobAdvertisement jobAdvertisement) {
 
-        City tempCity = cityDAO.getById(jobAdvertisement.getCity().getId());
-
-        Employer tempEmployer = employerDAO.getById(jobAdvertisement.getEmployer().getId());
-
-        Job tempJob = jobDAO.getById(jobAdvertisement.getJob().getId());
-
-        jobAdvertisement.setCity(tempCity);
-        jobAdvertisement.setEmployer(tempEmployer);
-        jobAdvertisement.setJob(tempJob);
+//        City tempCity = cityDAO.getById(jobAdvertisement.getCity().getId());
+//
+//        Employer tempEmployer = employerDAO.getById(jobAdvertisement.getEmployer().getId());
+//
+//        Job tempJob = jobDAO.getById(jobAdvertisement.getJob().getId());
+//
+//        jobAdvertisement.setCity(tempCity);
+//        jobAdvertisement.setEmployer(tempEmployer);
+//        jobAdvertisement.setJob(tempJob);
 
         return new SuccessDataResult<>(this.jobAdvertisementDAO.save(jobAdvertisement), "Yaradildi");
     }
