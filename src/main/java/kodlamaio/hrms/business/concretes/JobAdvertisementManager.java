@@ -41,6 +41,24 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     }
 
     @Override
+    public DataResult<List<JobAdvertisement>> getAllActive() {
+        return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDAO.getAllActive(), "Butun aktivler listlendi.");
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisement>> getAllActiveWithEmployerId(int employerId) {
+        return new SuccessDataResult<List<JobAdvertisement>>(
+                this.jobAdvertisementDAO.getAllActiveWithEmployerId(employerId),
+                "Employerin aktiv elanlari listlendi.");
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisement>> getAllActiveOrderByDateASC() {
+        return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDAO.getAllActiveOrderByDateASC(), "Tarixe gore siralandi.");
+    }
+
+
+    @Override
     public DataResult<JobAdvertisement> add(JobAdvertisement jobAdvertisement) {
 
 //        City tempCity = cityDAO.getById(jobAdvertisement.getCity().getId());
@@ -54,5 +72,15 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 //        jobAdvertisement.setJob(tempJob);
 
         return new SuccessDataResult<>(this.jobAdvertisementDAO.save(jobAdvertisement), "Yaradildi");
+    }
+
+    @Override
+    public Result deActive(int jobAdvertisementId) {
+        JobAdvertisement jobAdvertisement = jobAdvertisementDAO.getById(jobAdvertisementId);
+
+        jobAdvertisement.setActive(false);
+
+        jobAdvertisementDAO.save(jobAdvertisement);
+        return new SuccessResult("Elan deaktiv edildi.");
     }
 }

@@ -12,6 +12,16 @@ public interface JobAdvertisementService {
 
     DataResult<List<JobAdvertisement>> getAll();
 
+    DataResult<List<JobAdvertisement>> getAllActive();
+
+    DataResult<List<JobAdvertisement>> getAllActiveWithEmployerId(int employerId);
+
+    DataResult<List<JobAdvertisement>> getAllActiveOrderByDateASC();
+
     DataResult<JobAdvertisement> add(JobAdvertisement jobAdvertisement);
+
+    Result deActive(int jobAdvertisementId);
+
+
 
 }

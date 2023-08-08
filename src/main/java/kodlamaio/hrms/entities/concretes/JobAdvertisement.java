@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -49,6 +50,9 @@ public class JobAdvertisement {
 
     @Column(name = "is_active")
     private boolean isActive;
+
+    @Column(name = "posting_date")
+    private Date postingDate;
 
 
 
