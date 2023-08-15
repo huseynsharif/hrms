@@ -18,12 +18,10 @@ import kodlamaio.hrms.entities.concretes.Employer;
 public class EmployerManager implements EmployerService{
 
 	private EmployerDAO employerDAO;
-	private EmployerRegister employerRegister;
 	
 	@Autowired
-	public EmployerManager(EmployerDAO employerDAO, EmployerRegister employerRegister) {
+	public EmployerManager(EmployerDAO employerDAO) {
 		this.employerDAO = employerDAO;
-		this.employerRegister = employerRegister;
 	}
 
 	@Override
@@ -36,13 +34,9 @@ public class EmployerManager implements EmployerService{
 
 	@Override
 	public Result add(Employer employer) {
-		Result action = employerRegister.newEmployer(employer);
-		if(action.isSuccess()) {
-			this.employerDAO.save(employer);
-			return new SuccessResult("Is veren elave olundu");
-		}
-		else {
-			return new ErrorResult(action.getMessage());
-		}
+
+		this.employerDAO.save(employer);
+		return new SuccessResult("Is veren elave olundu");
+
 	}
 }

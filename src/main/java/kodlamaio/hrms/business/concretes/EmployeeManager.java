@@ -18,13 +18,11 @@ import kodlamaio.hrms.entities.concretes.Employee;
 public class EmployeeManager implements EmployeeService{
 
 	private EmployeeDAO employeeDAO;
-	private EmployeeRegister employeeRegister;
 	
 	@Autowired
-	public EmployeeManager(EmployeeDAO employeeDAO, EmployeeRegister employeeRegister) {
+	public EmployeeManager(EmployeeDAO employeeDAO) {
 		super();
 		this.employeeDAO = employeeDAO;
-		this.employeeRegister = employeeRegister;
 	}
 
 	
@@ -38,15 +36,10 @@ public class EmployeeManager implements EmployeeService{
 
 	@Override
 	public Result add(Employee employee) {
-		Result action = employeeRegister.newEmployee(employee);
-		if(action.isSuccess()) {
-			this.employeeDAO.save(employee);
-			return new SuccessResult("Istifadeci elave olundu");
-		}
-		else {
-			
-			return new ErrorResult(action.getMessage());
-		}
+
+		this.employeeDAO.save(employee);
+		return new SuccessResult("Istifadeci elave olundu");
+
 	}
 
 
