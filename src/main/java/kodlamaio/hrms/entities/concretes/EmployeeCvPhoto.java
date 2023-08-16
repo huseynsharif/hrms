@@ -5,22 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "job_titles")
-public class Job {
+@Table(name = "employee_cv_photos")
+public class EmployeeCvPhoto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    private String title;
-
-    @OneToMany(mappedBy = "job")
-    private List<Experience> experiences;
+    @Column(name = "photo_url", nullable = false, length = 500)
+    private String photoUrl;
 
 }

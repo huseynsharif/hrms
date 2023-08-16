@@ -11,16 +11,18 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "job_titles")
-public class Job {
+@Table(name = "programming_language")
+public class ProgrammingLanguage {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String title;
+    @Column(name = "programming_language")
+    private String languageName;
 
-    @OneToMany(mappedBy = "job")
-    private List<Experience> experiences;
+    @OneToMany(mappedBy = "programmingLanguage")
+    private List<EmployeeCv> employeeCvs;
 
 }

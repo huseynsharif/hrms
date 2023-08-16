@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,5 +25,8 @@ public class Language {
     @NotBlank
     @Column(name = "language")
     private String language;
+
+    @OneToMany(mappedBy = "language")
+    private List<EmployeeCv> employeeCvs;
 
 }
