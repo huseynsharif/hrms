@@ -12,17 +12,19 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "job_titles")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","experiences"})
-public class Job {
+@Table(name = "departments")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","educations"})
+public class Department {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String title;
+    @Column(name = "department_name")
+    private String departmentName;
 
-    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY)
-    private List<Experience> experiences;
+    @OneToMany(mappedBy = "department")
+    private List<Education> educations;
 
 }

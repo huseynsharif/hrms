@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 @Table(name = "experiences")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employeeCv"})
 public class Experience {
 
     @Id
@@ -26,7 +28,7 @@ public class Experience {
     @Column(name = "companyName", nullable = false)
     private String companyName;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "job_id", referencedColumnName = "id")
     private Job job;
 
@@ -38,7 +40,7 @@ public class Experience {
     @Column(name = "ending_date")
     private LocalDate endingDate;
 
-    @OneToOne(mappedBy = "experience")
+    @OneToOne(mappedBy = "experience", fetch = FetchType.LAZY)
     private EmployeeCv employeeCv;
 
 }

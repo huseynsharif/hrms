@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "languages")
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employeCvs"})
 public class Language {
 
     @Id

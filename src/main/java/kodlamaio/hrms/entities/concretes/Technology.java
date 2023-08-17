@@ -12,19 +12,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "programming_languages")
+@Table(name = "technologies")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","employeeCvs"})
-public class ProgrammingLanguage {
+public class Technology {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "programming_language")
-    private String languageName;
+    @Column(name = "technology_name")
+    private String technologyName;
 
-    @OneToMany(mappedBy = "programmingLanguage", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "technology", fetch = FetchType.LAZY)
     private List<EmployeeCv> employeeCvs;
-
 }

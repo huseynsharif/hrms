@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "educations")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employeeCv"})
 public class Education {
 
     @Id
@@ -20,7 +22,7 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "university_id")
     private University university;
 
@@ -32,7 +34,11 @@ public class Education {
     @Column(name = "ending_year")
     private int endingYear;
 
-    @OneToOne(mappedBy = "education")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    private Department department;
+
+    @OneToOne(mappedBy = "education",fetch = FetchType.LAZY)
     private EmployeeCv employeeCv;
 
 }
