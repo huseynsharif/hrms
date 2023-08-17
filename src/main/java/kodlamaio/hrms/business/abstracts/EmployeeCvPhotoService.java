@@ -7,6 +7,6 @@ import java.io.IOException;
 
 public interface EmployeeCvPhotoService {
 
-    Result add(MultipartFile photophoto, int employeeCvId) throws IOException;
+    Result add(MultipartFile photophoto) throws IOException;
 
 }

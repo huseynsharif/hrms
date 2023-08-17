@@ -29,9 +29,10 @@ public class EmployeeCv {
     @JoinColumn(name = "experience_id", referencedColumnName = "id")
     private Experience experience;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "language_id", referencedColumnName = "id")
-    private Language language;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "language_id", referencedColumnName = "id")
+    @Column(name = "language_id")
+    private int languageId;
 
     @Column(name = "language_level", nullable = false)
     private int languageLevel;
@@ -45,17 +46,22 @@ public class EmployeeCv {
     @Column( name = "linkedin_url", nullable = false, length = 500)
     private String linkedinUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "programming_language_id", referencedColumnName = "id")
-    private ProgrammingLanguage programmingLanguage;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "programming_language_id", referencedColumnName = "id")
+    @Column(name = "programming_language_id")
+    private int programmingLanguageId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "photo_id", referencedColumnName = "id")
-    private EmployeeCvPhoto employeeCvPhoto;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "photo_id", referencedColumnName = "id")
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "technology_id", referencedColumnName = "id")
-    private Technology technology;
+    @Column(name = "employee_cv_photo_id")
+    private int employeeCvPhotoId;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "technology_id", referencedColumnName = "id")
+
+    @Column(name = "technology_id")
+    private int technologyId;
 
 
 }

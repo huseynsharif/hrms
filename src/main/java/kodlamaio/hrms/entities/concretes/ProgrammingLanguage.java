@@ -24,7 +24,4 @@ public class ProgrammingLanguage {
     @Column(name = "programming_language")
     private String languageName;
 
-    @OneToMany(mappedBy = "programmingLanguage", fetch = FetchType.LAZY)
-    private List<EmployeeCv> employeeCvs;
-
 }

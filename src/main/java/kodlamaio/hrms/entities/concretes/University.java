@@ -28,8 +28,4 @@ public class University {
     @NotBlank
     @Column(name = "university_name", nullable = false)
     private String name;
-
-    @OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
-    private List<Education> educations;
-
 }

@@ -23,9 +23,9 @@ public class EmployeeCvPhotoController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestParam("photo") MultipartFile photo, @RequestParam("employeeCvId") int employeeCvId) throws IOException {
+    public ResponseEntity<?> add(@RequestParam("photo") MultipartFile photo) throws IOException {
 
-        return ResponseEntity.ok(this.employeeCvPhotoService.add(photo, employeeCvId));
+        return ResponseEntity.ok(this.employeeCvPhotoService.add(photo));
 
     }
 

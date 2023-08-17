@@ -28,7 +28,4 @@ public class Language {
     @Column(name = "language")
     private String language;
 
-    @OneToMany(mappedBy = "language")
-    private List<EmployeeCv> employeeCvs;
-
 }

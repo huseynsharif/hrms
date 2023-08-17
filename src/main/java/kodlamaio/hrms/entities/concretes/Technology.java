@@ -22,7 +22,4 @@ public class Technology {
 
     @Column(name = "technology_name")
     private String technologyName;
-
-    @OneToMany(mappedBy = "technology", fetch = FetchType.LAZY)
-    private List<EmployeeCv> employeeCvs;
 }

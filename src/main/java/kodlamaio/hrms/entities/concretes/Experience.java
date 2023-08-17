@@ -28,9 +28,9 @@ public class Experience {
     @Column(name = "companyName", nullable = false)
     private String companyName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "job_id", referencedColumnName = "id")
-    private Job job;
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(name = "job_id")
+    private int jobId;
 
     @NotBlank
     @NotNull
@@ -40,7 +40,5 @@ public class Experience {
     @Column(name = "ending_date")
     private LocalDate endingDate;
 
-    @OneToOne(mappedBy = "experience", fetch = FetchType.LAZY)
-    private EmployeeCv employeeCv;
 
 }

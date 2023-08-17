@@ -23,7 +23,4 @@ public class EmployeeCvPhoto {
     @Column(name = "photo_url", nullable = false, length = 500)
     private String photoUrl;
 
-    @OneToOne(mappedBy = "employeeCvPhoto", fetch = FetchType.LAZY)
-    private EmployeeCv employeeCv;
-
 }

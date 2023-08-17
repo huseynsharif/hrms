@@ -22,7 +22,4 @@ public class Job {
 
     private String title;
 
-    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY)
-    private List<Experience> experiences;
-
 }

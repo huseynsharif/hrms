@@ -22,9 +22,9 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "university_id")
-    private University university;
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(name = "university_id")
+    private int universityId;
 
     @NotBlank
     @NotNull
@@ -34,11 +34,8 @@ public class Education {
     @Column(name = "ending_year")
     private int endingYear;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id", referencedColumnName = "id")
-    private Department department;
-
-    @OneToOne(mappedBy = "education",fetch = FetchType.LAZY)
-    private EmployeeCv employeeCv;
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(name = "department_id")
+    private int departmentId;
 
 }
