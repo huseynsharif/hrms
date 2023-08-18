@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/employeeCv")
 public class EmployeeCvController {
@@ -34,6 +36,20 @@ public class EmployeeCvController {
     @GetMapping("/getbyid")
     public ResponseEntity<?> getbyid(@RequestParam(name = "id") int id){
         return ResponseEntity.ok(this.employeeCvService.findById(id));
+    }
+
+    @GetMapping("getallorderedbyeducationendingyeardesc")
+    public ResponseEntity<?> getAllOrderedByEducationEndingYearDesc(){
+
+        return ResponseEntity.ok(this.employeeCvService.findEmployeeCvOrderByEducation_EndingYearDesc());
+
+    }
+
+    @GetMapping("getallorderedbyexperienceedningdatedesc")
+    public ResponseEntity<?> getAllOrderedByExperienceEndingDateDesc(){
+
+        return ResponseEntity.ok(this.employeeCvService.findEmployeeCvOrderByExperience_EndingDateDesc());
+
     }
 
 

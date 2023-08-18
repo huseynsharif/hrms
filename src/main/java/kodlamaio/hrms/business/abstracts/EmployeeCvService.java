@@ -15,4 +15,13 @@ public interface EmployeeCvService {
 
     DataResult<EmployeeCv> findById(int id);
 
+    DataResult<List<EmployeeCv>> findEmployeeCvByEducation_EndingYearisNull();
+
+    DataResult<List<EmployeeCv>> findEmployeeCvOrderByEducation_EndingYearDesc();
+
+    DataResult<List<EmployeeCv>> findEmployeeCvByExperience_EndingDateisNull();
+
+    DataResult<List<EmployeeCv>> findEmployeeCvOrderByExperience_EndingDateDesc();
+
+
 }

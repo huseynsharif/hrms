@@ -50,4 +50,29 @@ public class EmployeeCvManager implements EmployeeCvService {
     public DataResult<EmployeeCv> findById(int id) {
         return new SuccessDataResult<>(this.employeeCvDAO.findEmployeeCvById(id), "Finded by id");
     }
+
+    @Override
+    public DataResult<List<EmployeeCv>> findEmployeeCvByEducation_EndingYearisNull() {
+        return new SuccessDataResult<>(this.employeeCvDAO.findEmployeeCvByEducation_EndingYearisNull(), "Nulls listed");
+    }
+
+    @Override
+    public DataResult<List<EmployeeCv>> findEmployeeCvOrderByEducation_EndingYearDesc() {
+
+        List<EmployeeCv> orderedcvs = this.employeeCvDAO.findEmployeeCvByEducation_EndingYearisNull();
+        orderedcvs.addAll(this.employeeCvDAO.findEmployeeCvOrderByEducation_EndingYearDesc());
+        return new SuccessDataResult<>(orderedcvs, "Ordered by education ending year desc.");
+    }
+
+    @Override
+    public DataResult<List<EmployeeCv>> findEmployeeCvByExperience_EndingDateisNull() {
+        return new SuccessDataResult<>(this.employeeCvDAO.findEmployeeCvByExperience_EndingDateisNull(), "Nulls listed");
+    }
+
+    @Override
+    public DataResult<List<EmployeeCv>> findEmployeeCvOrderByExperience_EndingDateDesc() {
+        List<EmployeeCv> orderedcvs = this.employeeCvDAO.findEmployeeCvByExperience_EndingDateisNull();
+        orderedcvs.addAll(this.employeeCvDAO.findEmployeeCvOrderByExperience_EndingDateDesc());
+        return new SuccessDataResult<>(orderedcvs, "Ordered by experience ending date desc.");
+    }
 }
