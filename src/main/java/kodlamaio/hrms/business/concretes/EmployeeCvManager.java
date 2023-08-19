@@ -1,10 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
 import kodlamaio.hrms.business.abstracts.EmployeeCvService;
-import kodlamaio.hrms.core.utilities.results.DataResult;
-import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
-import kodlamaio.hrms.core.utilities.results.SuccessResult;
+import kodlamaio.hrms.core.utilities.results.*;
 import kodlamaio.hrms.dataAccess.abstracts.EducationDAO;
 import kodlamaio.hrms.dataAccess.abstracts.EmployeeCvDAO;
 import kodlamaio.hrms.dataAccess.abstracts.ExperienceDAO;
@@ -48,7 +45,14 @@ public class EmployeeCvManager implements EmployeeCvService {
 
     @Override
     public DataResult<EmployeeCv> findById(int id) {
-        return new SuccessDataResult<>(this.employeeCvDAO.findEmployeeCvById(id), "Finded by id");
+
+        EmployeeCv employeeCv = this.employeeCvDAO.findEmployeeCvById(id);
+
+        if (employeeCv == null){
+            return new ErrorDataResult<>("Finded by id");
+        }
+
+        return new SuccessDataResult<>(employeeCv, "Finded by id");
     }
 
     @Override
