@@ -16,10 +16,10 @@ public interface EmployeeCvDAO extends JpaRepository<EmployeeCv, Integer> {
     @Query("FROM EmployeeCv where education.endingYear != 0 ORDER BY education.endingYear desc ")
     List<EmployeeCv> findEmployeeCvOrderByEducation_EndingYearDesc();
 
-    @Query("FROM EmployeeCv where experience.endingDate=0")
+    @Query("FROM EmployeeCv where experience.endingDate=NULL")
     List<EmployeeCv> findEmployeeCvByExperience_EndingDateisNull();
 
-    @Query("SELECT e FROM EmployeeCv e where e.experience.endingDate != NULL ORDER BY e.experience.endingDate desc ")
+    @Query("FROM EmployeeCv where experience.endingDate != NULL ORDER BY experience.endingDate desc ")
     List<EmployeeCv> findEmployeeCvOrderByExperience_EndingDateDesc();
 
 }
