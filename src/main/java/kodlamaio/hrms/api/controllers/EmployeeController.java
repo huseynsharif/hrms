@@ -2,6 +2,7 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.List;
 
+import kodlamaio.hrms.entities.dtos.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +34,8 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Employee employee) {
-			return this.employeeService.add(employee);
+	public Result add(@RequestBody EmployeeDto employeeDto) {
+			return this.employeeService.add(employeeDto);
 	}
 	
 	

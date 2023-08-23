@@ -2,29 +2,22 @@ package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import kodlamaio.hrms.core.adapters.mappers.ModelMapperService;
+import kodlamaio.hrms.core.utilities.results.*;
+import kodlamaio.hrms.entities.dtos.EmployeeDto;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployeeService;
-import kodlamaio.hrms.core.utilities.results.DataResult;
-import kodlamaio.hrms.core.utilities.results.ErrorResult;
-import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
-import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployeeDAO;
 import kodlamaio.hrms.entities.concretes.Employee;
 
 @Service
+@AllArgsConstructor
 public class EmployeeManager implements EmployeeService{
 
-	private EmployeeDAO employeeDAO;
-	
-	@Autowired
-	public EmployeeManager(EmployeeDAO employeeDAO) {
-		super();
-		this.employeeDAO = employeeDAO;
-	}
-
+	private final EmployeeDAO employeeDAO;
+	private final ModelMapperService modelMapperService;
 	
 	@Override
 	public DataResult<List<Employee>> getAll() {
@@ -35,7 +28,11 @@ public class EmployeeManager implements EmployeeService{
 
 
 	@Override
-	public Result add(Employee employee) {
+	public Result add(EmployeeDto employeeDto) {
+		if(employeeDto.getPassword() == employeeDto.getCPassword()){
+			return new ErrorResult("Passwords must be same.");
+		}
+		Employee employee = modelMapperService.getModelMapper().map(employeeDto, Employee.class);
 
 		this.employeeDAO.save(employee);
 		return new SuccessResult("Istifadeci elave olundu");
