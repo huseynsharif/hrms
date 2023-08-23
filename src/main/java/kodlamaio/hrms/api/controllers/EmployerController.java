@@ -1,5 +1,6 @@
 package kodlamaio.hrms.api.controllers;
 
+import kodlamaio.hrms.entities.dtos.EmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +30,8 @@ public class EmployerController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Employer employer) {
-		return this.employerService.add(employer);
+	public Result add(@RequestBody EmployerDto employerDto) {
+		return this.employerService.add(employerDto);
 	}
 	
 }

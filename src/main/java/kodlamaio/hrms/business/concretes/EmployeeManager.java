@@ -29,7 +29,7 @@ public class EmployeeManager implements EmployeeService{
 
 	@Override
 	public Result add(EmployeeDto employeeDto) {
-		if(employeeDto.getPassword() == employeeDto.getCPassword()){
+		if(!employeeDto.getPassword().equals(employeeDto.getCPassword())){
 			return new ErrorResult("Passwords must be same.");
 		}
 		Employee employee = modelMapperService.getModelMapper().map(employeeDto, Employee.class);

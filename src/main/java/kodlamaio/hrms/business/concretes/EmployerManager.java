@@ -2,6 +2,9 @@ package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
 
+import kodlamaio.hrms.core.adapters.mappers.ModelMapperService;
+import kodlamaio.hrms.entities.dtos.EmployerDto;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +18,12 @@ import kodlamaio.hrms.dataAccess.abstracts.EmployerDAO;
 import kodlamaio.hrms.entities.concretes.Employer;
 
 @Service
+@AllArgsConstructor
 public class EmployerManager implements EmployerService{
 
 	private EmployerDAO employerDAO;
-	
-	@Autowired
-	public EmployerManager(EmployerDAO employerDAO) {
-		this.employerDAO = employerDAO;
-	}
+	private ModelMapperService modelMapperService;
+
 
 	@Override
 	public DataResult<List<Employer>> getAll() {
@@ -33,7 +34,13 @@ public class EmployerManager implements EmployerService{
 
 
 	@Override
-	public Result add(Employer employer) {
+	public Result add(EmployerDto employerDto) {
+
+		if (!employerDto.getPassword().equals(employerDto.getCPassword())){
+			return new ErrorResult("Passwords must be same.");
+		}
+
+		Employer employer = modelMapperService.getModelMapper().map(employerDto, Employer.class);
 
 		this.employerDAO.save(employer);
 		return new SuccessResult("Is veren elave olundu");

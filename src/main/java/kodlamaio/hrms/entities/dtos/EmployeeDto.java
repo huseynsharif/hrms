@@ -2,25 +2,20 @@ package kodlamaio.hrms.entities.dtos;
 
 import lombok.Data;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class EmployeeDto {
-
-    private String email;
-
-    private String password;
-
-    private String cPassword;
+public class EmployeeDto extends BaseUserDto{
 
     @NotBlank
     @NotNull
-    private String firstName;
+    private String name;
 
     @NotBlank
     @NotNull
-    private String lastName;
+    private String surname;
 
     @NotBlank
     @NotNull
@@ -28,6 +23,6 @@ public class EmployeeDto {
 
     @NotBlank
     @NotNull
-    private String birthOfYear;
+    private int birthyear;
 
 }
