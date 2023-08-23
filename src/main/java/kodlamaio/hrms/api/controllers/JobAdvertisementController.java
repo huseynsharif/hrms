@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobadvertisement")
+@CrossOrigin
 public class JobAdvertisementController {
 
     private JobAdvertisementService jobAdvertisementService;

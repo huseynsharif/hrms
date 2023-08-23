@@ -46,10 +46,9 @@ public class EmployeeCv {
     @Column( name = "linkedin_url", nullable = false, length = 500)
     private String linkedinUrl;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "programming_language_id", referencedColumnName = "id")
-    @Column(name = "programming_language_id")
-    private int programmingLanguageId;
+    @ManyToOne()
+    @JoinColumn(name = "programming_language_id", referencedColumnName = "id")
+    private ProgrammingLanguage programmingLanguage;
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "photo_id", referencedColumnName = "id")

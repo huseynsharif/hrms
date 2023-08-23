@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,26 +26,26 @@ public class JobAdvertisement {
     @Column(name = "open_positions")
     private int openPositions;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "employer_id", referencedColumnName = "id")
-//    private Employer employer;
+    @ManyToOne()
+    @JoinColumn(name = "employer_id", referencedColumnName = "id")
+    private Employer employer;
+
+    @ManyToOne()
+    @JoinColumn(name = "job_id", referencedColumnName = "id")
+    private Job job;
+
+    @ManyToOne()
+    @JoinColumn(name = "city_id")
+    private City city;
+
+//    @Column(name = "employer_id")
+//    private int employerId;
 //
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "job_id", referencedColumnName = "id")
-//    private Job job;
+//    @Column(name = "city_id")
+//    private int cityId;
 //
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "city_id")
-//    private City city;
-
-    @Column(name = "employer_id")
-    private int employerId;
-
-    @Column(name = "city_id")
-    private int cityId;
-
-    @Column(name = "job_id")
-    private int jobId;
+//    @Column(name = "job_id")
+//    private int jobId;
 
     private LocalDate deadline;
 

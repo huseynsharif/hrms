@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/employeeCv")
+@CrossOrigin
 public class EmployeeCvController {
 
     private EmployeeCvService employeeCvService;

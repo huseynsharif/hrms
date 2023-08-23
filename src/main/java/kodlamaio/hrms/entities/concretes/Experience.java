@@ -28,9 +28,9 @@ public class Experience {
     @Column(name = "companyName", nullable = false)
     private String companyName;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "job_id")
-    private int jobId;
+    @ManyToOne()
+    @JoinColumn(name = "job_id")
+    private Job job;
 
     @NotBlank
     @NotNull
