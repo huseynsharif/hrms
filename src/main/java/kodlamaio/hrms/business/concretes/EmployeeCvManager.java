@@ -48,11 +48,12 @@ public class EmployeeCvManager implements EmployeeCvService {
 
         EmployeeCv employeeCv = this.employeeCvDAO.findEmployeeCvById(id);
 
-        if (employeeCv == null){
+        if (employeeCv == null) {
             return new ErrorDataResult<>("Cannot find cv by given id.");
         }
-
-        return new SuccessDataResult<>(employeeCv, "Finded by id");
+        else {
+            return new SuccessDataResult<>(employeeCv, "Finded by id");
+        }
     }
 
     @Override
