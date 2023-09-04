@@ -29,7 +29,6 @@ public class BaseUserManager implements BaseUserService {
             return new ErrorDataResult<>("Email or password is incorrect.");
         }
         else{
-
             return new SuccessDataResult<>(baseUser, "Finded successfully.");
         }
 
